@@ -1,1 +1,1 @@
-export type ButtonTypes = "normal";
+export type ButtonTypes = "normal" | "cancel" | "new" | "save";
