@@ -2,28 +2,39 @@
 
 // export const AppContainer = styled.div`
 
-import styled from 'styled-components';
-
+import styled from "styled-components";
+import { colors } from "themes/colors";
+import { transition } from "themes/generalStyles";
 // `;
 
 export const AppContainer = styled.div`
-
-  width: 100vw;
+  /* width: 100%; */
+  min-height: 100vh;
   display: flex;
 
   justify-content: center;
 
+  background-color: ${colors.backgroundColor};
 `;
 
 export const AppContent = styled.div`
-
   width: 90vw;
-  background-color: red;
 
-  .centered{
+  .centered {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
+  .b-radius-15 {
+    border-radius: 15px;
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `;
