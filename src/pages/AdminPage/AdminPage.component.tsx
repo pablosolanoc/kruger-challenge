@@ -20,6 +20,7 @@ const AdminPage = () => {
 
   return (
     <AdminPageContainer className="centered">
+      <Table data={employeesList}></Table>
       <CreateNew></CreateNew>
     </AdminPageContainer>
   );
