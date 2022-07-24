@@ -39,6 +39,27 @@ export const Button = styled.button<ButtonProps>`
     }
   }
 
+  &.save,
+  &.new,
+  &.cancel {
+    height: 3rem;
+    font-size: 1.2rem;
+    background-color: ${colors.backgroundColor};
+
+    padding: 1.3rem;
+    color: ${colors.buttonText};
+
+    :hover {
+      background-color: ${colors.buttonColor.hover};
+      /* height: 3.8rem; */
+      box-shadow: none;
+    }
+
+    :action {
+      background-color: ${colors.buttonColor.action};
+    }
+  }
+
   .buttonIcon {
     margin: 0 0.5rem;
     svg {
