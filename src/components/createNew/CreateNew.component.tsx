@@ -1,7 +1,7 @@
 import { EmployeeApi } from "api/employee/employeeApi";
 import MyButton from "components/MyButton/MyButton.component";
 import { Title } from "components/Title/Title.styles";
-import { useEditingEmployee } from "contexts/editingPokemon/useEditingPokemon";
+import { useEditingEmployee } from "contexts/editingEmployee/useEditingEmployee";
 import { useFormik } from "formik";
 import { EmployeeDto } from "types/dtos/employeeDto";
 import {
@@ -11,21 +11,20 @@ import {
 import { CreateNewContainer } from "./CreateNew.styles";
 import { ReactComponent as Save } from "assets/icons/save.svg";
 import { ReactComponent as Cancel } from "assets/icons/cancel.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const CreateNew = () => {
   const { editingEmployee, employeeBeignEdited, setEmployeeBeignEdited } =
     useEditingEmployee();
+  const [tryingToAddExistingEmployee, setTryingToAddExistingEmployee] =
+    useState(false);
 
   useEffect(() => {
     console.log(employeeBeignEdited);
     if (Object.keys(employeeBeignEdited).length > 0) {
       formik.setFieldValue("names", employeeBeignEdited.names);
-
       formik.setFieldValue("lastnames", employeeBeignEdited.lastnames);
-
       formik.setFieldValue("email", employeeBeignEdited.email);
-
       formik.setFieldValue(
         "identification",
         employeeBeignEdited.identification
@@ -35,6 +34,8 @@ const CreateNew = () => {
       formik.setFieldValue("lastnames", "");
       formik.setFieldValue("email", "");
       formik.setFieldValue("identification", "");
+
+      setTryingToAddExistingEmployee(false);
     }
   }, [employeeBeignEdited]);
 
@@ -99,6 +100,11 @@ const CreateNew = () => {
       <Title className="centered">Nuevo empleado</Title>
       <div className="centered newButton">
         <MyButton type="new">Agregar nuevo empleado</MyButton>
+        {tryingToAddExistingEmployee && (
+          <span className="error">
+            {`El empleado con cédula ${formik.values.identification} ya existe. No se lo puede añadir otra vez.`}
+          </span>
+        )}
       </div>
       <div className="centered formContainer">
         <form onSubmit={formik.handleSubmit}>

@@ -52,6 +52,12 @@ export const CreateNewContainer = styled.div`
 
   .newButton {
     width: 100%;
+    flex-direction: column;
+    text-align: center;
+
+    span {
+      margin-top: 1rem;
+    }
   }
 
   .error {
