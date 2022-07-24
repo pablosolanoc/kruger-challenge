@@ -7,7 +7,22 @@ import { CreateNewContainer } from "components/createNew/CreateNew.styles";
 import CreateNew from "components/createNew/CreateNew.component";
 
 const AdminPage = () => {
-  return <AdminPageContainer className="centered"></AdminPageContainer>;
+  const [employeesList, setEmployeesList] = useState([] as EmployeeDto[]);
+
+  const loadEmployees = async () => {
+    const employees = await EmployeeApi.getEmployees({});
+    setEmployeesList(employees);
+  };
+
+  useEffect(() => {
+    loadEmployees();
+  }, []);
+
+  return (
+    <AdminPageContainer className="centered">
+      <CreateNew></CreateNew>
+    </AdminPageContainer>
+  );
 };
 
 export default AdminPage;
