@@ -1,5 +1,6 @@
-
-
 export const appRoutes = {
-  homePage: '/',
-}
+  homePage: "/",
+  adminLogin: "/loginAdmin",
+  employeeLogin: "/loginUser",
+  admin: "/admin",
+};
