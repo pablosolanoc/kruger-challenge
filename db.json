@@ -1,0 +1,53 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "identification": "0104543214",
+      "names": "Pablo Kruger",
+      "lastnames": "Solano Employee",
+      "email": "pablokruger@gmail.com",
+      "birthdate": "06/07/1998",
+      "address": "The one that goes and that crosses",
+      "phone": "0992877654",
+      "vaccinationstate": 1,
+      "vaccine": 2,
+      "vaccinationdate": "12/07/2022",
+      "dosisnumber": 3
+    },
+    {
+      "identification": "010123",
+      "names": "Pablo Kruger 2",
+      "lastnames": "Solano Employee 2",
+      "email": "pablokruger@gmail.com 2",
+      "birthdate": "06/07/1998",
+      "address": "The one that goes and that crosses 2",
+      "phone": "099287765412",
+      "vaccinationstate": "1",
+      "vaccinationstatasdasde": "1",
+      "vaccine": 2,
+      "id": 2
+    }
+  ],
+  "vaccines": [
+    {
+      "id": 0,
+      "vaccinename": "None"
+    },
+    {
+      "id": 1,
+      "vaccinename": "Sputnik"
+    },
+    {
+      "id": 2,
+      "vaccinename": "AstraZeneca"
+    },
+    {
+      "id": 3,
+      "vaccinename": "Pfizer"
+    },
+    {
+      "id": 4,
+      "vaccinename": "Jhonson&Jhonson"
+    }
+  ]
+}
