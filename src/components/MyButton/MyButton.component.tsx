@@ -1,5 +1,5 @@
 import { Cancel, New } from "constants/button/button";
-import { useEditingEmployee } from "contexts/editingPokemon/useEditingPokemon";
+import { useEditingEmployee } from "contexts/editingEmployee/useEditingEmployee";
 import { ButtonTypes } from "types/button";
 import { EmployeeDto } from "types/dtos/employeeDto";
 import { Button } from "./MyButton.styles";

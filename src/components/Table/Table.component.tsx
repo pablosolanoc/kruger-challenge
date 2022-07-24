@@ -3,7 +3,7 @@ import { ReactComponent as Edit } from "assets/icons/edit.svg";
 import { ReactComponent as Trash } from "assets/icons/trash.svg";
 import { TableContainer, TableStyled } from "./Table.styles";
 import { EmployeeDto } from "types/dtos/employeeDto";
-import { useEditingEmployee } from "contexts/editingPokemon/useEditingPokemon";
+import { useEditingEmployee } from "contexts/editingEmployee/useEditingEmployee";
 
 interface TableEmployeesProps {
   data: Array<EmployeeDto>;
