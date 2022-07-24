@@ -49,13 +49,15 @@ const CreateNew = () => {
       if (isUpdating) {
         console.log("hey ");
         newEmployee = {
+          id: employeeBeignEdited.id,
           names: values.names,
           lastnames: values.identification,
           email: values.email,
           identification: values.identification,
         };
-        // const putResult = await EmployeeApi.updatePokemon(newPokemon);
-        // window.location.reload();
+        const putResult = await EmployeeApi.updateEmployee(newEmployee);
+        console.log(putResult);
+        window.location.reload();
       } else {
         console.log("hey 2");
         newEmployee = {
@@ -71,8 +73,15 @@ const CreateNew = () => {
           vaccinationdate: "",
           dosisnumber: 0,
         };
-        // const postResult = await EmployeeApi.(newPokemon);
-        // window.location.reload();
+        const postResult = await EmployeeApi.createEmployee(newEmployee);
+        if (typeof postResult === "boolean") {
+          setTryingToAddExistingEmployee(true);
+          console.log("Usuario ya existe");
+        } else {
+          console.log("Anadido");
+          window.location.reload();
+        }
+        console.log(postResult);
       }
     },
   });
