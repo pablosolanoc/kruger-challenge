@@ -2,9 +2,11 @@ import * as yup from "yup";
 
 const namesValidation = yup
   .string()
+  .matches(/^[aA-zZ\s]+$/, "Solo se aceptan letras del alfabeto")
   .required("Los nombres del nuevo empleado es obligatorio");
 const lastNamesValidation = yup
   .string()
+  .matches(/^[aA-zZ\s]+$/, "Solo se aceptan letras del alfabeto")
   .required("Los apellidos del nuevo empleado es obligatorio");
 const identificationValidation = yup
   .string()
