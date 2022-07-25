@@ -4,25 +4,32 @@ import { ReactComponent as Trash } from "assets/icons/trash.svg";
 import { TableContainer, TableStyled } from "./Table.styles";
 import { EmployeeDto } from "types/dtos/employeeDto";
 import { useEditingEmployee } from "contexts/editingEmployee/useEditingEmployee";
+import { EmployeeApi } from "api/employee/employeeApi";
+import { Title } from "components/Title/Title.styles";
+import Filters from "components/Filters/Filters.component";
 
 interface TableEmployeesProps {
   data: Array<EmployeeDto>;
+  reloadData: () => Promise<void>;
 }
 
-const TableEmployees = ({ data }: TableEmployeesProps) => {
+const TableEmployees = ({ data, reloadData }: TableEmployeesProps) => {
   const { editingEmployee, setEmployeeBeignEdited } = useEditingEmployee();
 
   const handleEditClick = (employee: EmployeeDto) => {
     setEmployeeBeignEdited(employee);
   };
 
+  const handleDeleteClick = async (employee: EmployeeDto) => {
+    const deleteResult = await EmployeeApi.deleteEmployee(employee);
+    setEmployeeBeignEdited({} as EmployeeDto);
+    reloadData();
+  };
+
   return (
     <TableContainer>
-      <span className="title centered">Listado de empleados</span>
-      <div className="tableActions">
-        {/* <SearchBar />
-        <MyButton type="new">Nuevo</MyButton> */}
-      </div>
+      <Title className="centered">Listado de empleados</Title>
+      <Filters></Filters>
 
       <div className="table">
         <TableStyled className="">
@@ -57,7 +64,10 @@ const TableEmployees = ({ data }: TableEmployeesProps) => {
                   >
                     <Edit />
                   </div>
-                  <div className="erase">
+                  <div
+                    className="erase"
+                    onClick={() => handleDeleteClick(employee)}
+                  >
                     <Trash />
                   </div>
                 </div>
