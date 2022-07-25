@@ -6,6 +6,7 @@ export const FiltersContainer = styled.div`
 
   flex-direction: row;
   justify-content: space-around !important;
+  margin: 2rem 0;
 
   @media ${screenSizeQueries.lesser("sm")} {
     flex-direction: column;
@@ -43,6 +44,7 @@ export const FiltersContainer = styled.div`
   .labelButtonGroupCombo {
     span {
       width: 6rem;
+      margin: 0 1rem;
     }
   }
 `;
