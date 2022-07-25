@@ -23,18 +23,30 @@ export const EmployeeApi = {
     let query = `${endPointRoute}${employeeSlug}`;
 
     let searchingForNotVaccinated =
-      filters.vaccinationstate.toString() !== VaccinationStatusFilterEnum.ALL;
+      filters.vaccinationstate.toString() ===
+      VaccinationStatusFilterEnum.NOT_VACCINATED;
 
     query = addVaccinationStateFilter(
       query,
       filters.vaccinationstate.toString()
     );
+    //Only add vaccinationtype filter if searching for vaccinated employees
     if (!searchingForNotVaccinated) {
       query = addVaccinationTypeFilter(query, filters.vaccinationtype);
     }
 
     console.log(query);
-    const allEmployee = await getQuery(query);
+    //Load employees given vaccination state/type filter
+    let allEmployee = await getQuery(query);
+
+    //Only add vaccinationtype filter if searching for vaccinated employees
+    if (!searchingForNotVaccinated) {
+      allEmployee = filterByDate(
+        allEmployee,
+        filters.lowerDate,
+        filters.higherDate
+      );
+    }
     return allEmployee as EmployeeDto[];
   },
 

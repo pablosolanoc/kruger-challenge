@@ -6,6 +6,7 @@ import { EmployeeDto } from "types/dtos/employeeDto";
 import { VaccinationtypeType } from "types/filters";
 
 export const addVaccinationStateFilter = (query: string, filter: string) => {
+  //Only add filter if searching either for vaccinated or no vaccinated people
   if (filter !== VaccinationStatusFilterEnum.ALL) {
     return query + "?vaccinationstate=" + filter;
   }
@@ -59,4 +60,33 @@ export const addIdentificationFilterToQuery = (
     allUrl = allUrl + "?identification=" + identification;
   }
   return allUrl;
+};
+
+export const filterByDate = (
+  employees: EmployeeDto[],
+  lowerDate: string,
+  higherDate: string
+) => {
+  let resultProductData = employees.filter((emp) => {
+    const maximumDate = higherDate !== "" ? new Date(higherDate) : null;
+    const minimumDate = lowerDate !== "" ? new Date(lowerDate) : null;
+
+    const dateVaccinationEmp = new Date(emp.vaccinationdate ?? "");
+
+    if (maximumDate && !minimumDate) {
+      //If there is a maximum date, return true if date is less than that
+      return dateVaccinationEmp <= maximumDate;
+    } else if (!maximumDate && minimumDate) {
+      //If there is a minimum date, return true if date is higher than that
+      return dateVaccinationEmp >= minimumDate;
+    } else if (maximumDate && minimumDate) {
+      //If there is a minimum and maximum date, return true if date is between that range
+      return (
+        dateVaccinationEmp >= minimumDate && dateVaccinationEmp <= maximumDate
+      );
+    } else {
+      return true;
+    }
+  });
+  return resultProductData;
 };
