@@ -10,6 +10,8 @@ const Filters = () => {
     vaccinationtype,
     setVaccineTypeFilter,
     setVaccinationStatusFilter,
+    setDateLowerFilter,
+    setDateHigherFilter,
   } = useFilters();
 
   const [searchingForNotVaccinated, setSearchingForNotVaccinated] =
@@ -39,6 +41,16 @@ const Filters = () => {
         [`${checkboxClicked}`]: e.target.checked,
       } as VaccinationtypeType);
     }
+  };
+
+  const handleChangeLowerDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    setDateLowerFilter(e.target.value);
+  };
+
+  const handleChangeHigherDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    setDateHigherFilter(e.target.value);
   };
 
   return (
@@ -134,8 +146,16 @@ const Filters = () => {
       </div>
       <div className="filter dates">
         <span className="">Rango de fechas:</span>
-        <input type="date" disabled={searchingForNotVaccinated} />
-        <input type="date" disabled={searchingForNotVaccinated} />
+        <input
+          type="date"
+          disabled={searchingForNotVaccinated}
+          onChange={handleChangeLowerDate}
+        />
+        <input
+          type="date"
+          disabled={searchingForNotVaccinated}
+          onChange={handleChangeHigherDate}
+        />
       </div>
     </FiltersContainer>
   );
