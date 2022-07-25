@@ -46,13 +46,8 @@ export const EmployeeApi = {
   },
 
   createEmployee: async (new_employee: EmployeeDto) => {
-    const existingEmployee = await getQuery(
-      addFilterToQuery(`${endPointRoute}${employeeSlug}`, {
-        identification: new_employee.identification,
-      })
-    );
-    console.log(existingEmployee);
-    const isThereAEmployeeWithThatIdentification = existingEmployee.length > 0;
+    const isThereAEmployeeWithThatIdentification =
+      await searchForExistingEmployee(new_employee);
 
     if (isThereAEmployeeWithThatIdentification) {
       return false;
@@ -65,6 +60,13 @@ export const EmployeeApi = {
   },
 
   updateEmployee: async (employee_beign_edited: EmployeeDto) => {
+    const isThereAEmployeeWithThatIdentification =
+      await searchForExistingEmployee(employee_beign_edited);
+
+    if (isThereAEmployeeWithThatIdentification) {
+      return false;
+    }
+
     const employee = await putQuery(
       `${endPointRoute}${employeeSlug}${employee_beign_edited.id}`,
       employee_beign_edited
