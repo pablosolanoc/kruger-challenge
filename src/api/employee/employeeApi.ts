@@ -76,28 +76,8 @@ export const EmployeeApi = {
 
   deleteEmployee: async (employee_beign_deleted: EmployeeDto) => {
     const employee = await deleteQuery(
-      `${endPointRoute}${employee_beign_deleted.id}`
+      `${endPointRoute}${employeeSlug}${employee_beign_deleted.id}`
     );
     return [employee] as EmployeeDto[];
   },
-};
-
-type filtersType = {
-  identification?: string;
-  vaccinationstate?: string;
-};
-
-const addFilterToQuery = (baseUrl: string, filters: filtersType) => {
-  let allUrl = baseUrl;
-  const filtersKeys = Object.keys(filters);
-  for (let i = 0; i < filtersKeys.length; i++) {
-    allUrl =
-      allUrl +
-      "?" +
-      filtersKeys[i] +
-      "=" +
-      filters[filtersKeys[i] as keyof filtersType];
-  }
-  console.log(allUrl);
-  return allUrl;
 };
