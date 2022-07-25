@@ -52,18 +52,33 @@ const CreateNew = () => {
         newEmployee = {
           id: employeeBeignEdited.id,
           names: values.names,
-          lastnames: values.identification,
+          lastnames: values.lastnames,
           email: values.email,
           identification: values.identification,
+          birthdate: employeeBeignEdited.birthdate,
+          address: employeeBeignEdited.address,
+          phone: employeeBeignEdited.phone,
+          vaccinationstate: employeeBeignEdited.vaccinationstate,
+          vaccine: employeeBeignEdited.vaccine,
+          vaccinationdate: employeeBeignEdited.vaccinationdate,
+          dosisnumber: employeeBeignEdited.dosisnumber,
+          username: employeeBeignEdited.username,
+          password: employeeBeignEdited.password,
         };
         const putResult = await EmployeeApi.updateEmployee(newEmployee);
+        if (typeof putResult === "boolean") {
+          setTryingToAddExistingEmployee(true);
+          console.log("Usuario ya existe");
+        } else {
+          console.log("Anadido");
+          window.location.reload();
+        }
         console.log(putResult);
-        window.location.reload();
       } else {
         console.log("hey 2");
         newEmployee = {
           names: values.names,
-          lastnames: values.identification,
+          lastnames: values.lastnames,
           email: values.email,
           identification: values.identification,
           birthdate: "",
