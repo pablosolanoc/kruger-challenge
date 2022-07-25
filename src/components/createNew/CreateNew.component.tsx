@@ -95,9 +95,19 @@ const CreateNew = () => {
   const errorInIdentification =
     formik.touched.identification && Boolean(formik.errors.identification);
 
+  const {
+    identification: idBeginEdited,
+    names: namesBeignEdited,
+    lastnames: lastnamesBeignEdited,
+  } = employeeBeignEdited;
+
   return (
     <CreateNewContainer>
-      <Title className="centered">Nuevo empleado</Title>
+      <Title className="centered">
+        {editingEmployee
+          ? `Editando empleado: ${idBeginEdited} (${namesBeignEdited} ${lastnamesBeignEdited})`
+          : `Nuevo empleado`}
+      </Title>
       <div className="centered newButton">
         <MyButton type="new">Agregar nuevo empleado</MyButton>
         {tryingToAddExistingEmployee && (
