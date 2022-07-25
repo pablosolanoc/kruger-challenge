@@ -5,12 +5,23 @@ import { EmployeeApi } from "api/employee/employeeApi";
 import { EmployeeDto } from "types/dtos/employeeDto";
 import { CreateNewContainer } from "components/createNew/CreateNew.styles";
 import CreateNew from "components/createNew/CreateNew.component";
+import Filters from "components/Filters/Filters.component";
+import { Title } from "components/Title/Title.styles";
+import { useFilters } from "context/filters/useFilters";
 
 const AdminPage = () => {
   const [employeesList, setEmployeesList] = useState([] as EmployeeDto[]);
+  const { vaccinationstate, vaccinationtype, lowerDate, higherDate } =
+    useFilters();
 
   const loadEmployees = async () => {
-    const employees = await EmployeeApi.getEmployees({});
+    const filters = {
+      vaccinationstate,
+      vaccinationtype,
+      lowerDate,
+      higherDate,
+    };
+    const employees = await EmployeeApi.getEmployees({ filters });
     setEmployeesList(employees);
   };
 
@@ -18,9 +29,13 @@ const AdminPage = () => {
     loadEmployees();
   }, []);
 
+  useEffect(() => {
+    loadEmployees();
+  }, [vaccinationstate, vaccinationtype, lowerDate, higherDate]);
+
   return (
     <AdminPageContainer className="centered">
-      <Table data={employeesList}></Table>
+      <Table data={employeesList} reloadData={loadEmployees}></Table>
       <CreateNew></CreateNew>
     </AdminPageContainer>
   );
