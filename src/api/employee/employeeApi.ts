@@ -8,6 +8,7 @@ import {
   addIdentificationFilterToQuery,
   addVaccinationStateFilter,
   addVaccinationTypeFilter,
+  filterByDate,
   searchForExistingEmployee,
 } from "./employeeApi.utils";
 
