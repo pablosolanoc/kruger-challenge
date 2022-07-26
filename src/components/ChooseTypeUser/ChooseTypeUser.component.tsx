@@ -19,6 +19,16 @@ const ChooseTypeUser = () => {
           Entrar como empleado
         </MyButton>
       </Link>
+      <span className="madeBy b-radius-15">
+        {`Realizado por: `}
+        <a
+          href="https://github.com/pablosolanoc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Pablo Solano
+        </a>
+      </span>
     </ChooseTypeUserContainer>
   );
 };

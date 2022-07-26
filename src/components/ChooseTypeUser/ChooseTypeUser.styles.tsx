@@ -25,4 +25,11 @@ export const ChooseTypeUserContainer = styled.div`
     flex-wrap: wrap;
     width: 100%;
   }
+
+  .madeBy {
+    position: fixed;
+    bottom: 10px;
+    background-color: ${colors.backgroundColor2};
+    padding: 1rem;
+  }
 `;
