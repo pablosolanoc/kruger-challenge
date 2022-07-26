@@ -7,7 +7,7 @@ import { EmployeeDto } from "types/dtos/employeeDto";
 import {
   newEmployeeInitialValues,
   newEmployeeValidation,
-} from "validationSchemas/employeeValidation";
+} from "validationSchemas/newEmployeeValidation";
 import { CreateNewContainer } from "./CreateNew.styles";
 import { ReactComponent as Save } from "assets/icons/save.svg";
 import { ReactComponent as Cancel } from "assets/icons/cancel.svg";
@@ -65,7 +65,9 @@ const CreateNew = () => {
           username: employeeBeignEdited.username,
           password: employeeBeignEdited.password,
         };
-        const putResult = await EmployeeApi.updateEmployee(newEmployee);
+        const putResult = await EmployeeApi.updateEmployeeBasicInfo(
+          newEmployee
+        );
         if (typeof putResult === "boolean") {
           setTryingToAddExistingEmployee(true);
           console.log("Usuario ya existe");
