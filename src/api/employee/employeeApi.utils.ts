@@ -40,15 +40,40 @@ export const searchForExistingEmployee = async (new_employee: EmployeeDto) => {
     ? new_employee.identification?.toString()
     : "";
 
-  const existingEmployee = await getQuery(
-    addIdentificationFilterToQuery(
-      `${endPointRoute}${employeeSlug}`,
-      identificationToSearch
-    )
+  const existingEmployee = await getEmployeeByIdentification(
+    identificationToSearch
   );
+
   console.log(existingEmployee);
   const isThereAEmployeeWithThatIdentification = existingEmployee.length > 0;
   return isThereAEmployeeWithThatIdentification;
+};
+
+export const getEmployeeByIdentification = async (identification: string) => {
+  const existingEmployee = await getQuery(
+    addIdentificationFilterToQuery(
+      `${endPointRoute}${employeeSlug}`,
+      identification
+    )
+  );
+  return existingEmployee;
+};
+
+export const getEmployeeByIdentificationAndPassword = async (
+  identification: string,
+  password: string
+) => {
+  if (identification !== "" && password !== "") {
+    let query = addIdentificationFilterToQuery(
+      `${endPointRoute}${employeeSlug}`,
+      identification
+    );
+    query = addPasswordFilterToQuery(query, password);
+    console.log(query);
+    const existingEmployee = await getQuery(query);
+    return existingEmployee[0] as EmployeeDto;
+  }
+  return {};
 };
 
 export const addIdentificationFilterToQuery = (
@@ -58,6 +83,14 @@ export const addIdentificationFilterToQuery = (
   let allUrl = baseUrl;
   if (identification !== "") {
     allUrl = allUrl + "?identification=" + identification;
+  }
+  return allUrl;
+};
+
+export const addPasswordFilterToQuery = (baseUrl: string, password: string) => {
+  let allUrl = baseUrl;
+  if (password !== "") {
+    allUrl = allUrl + "&password=" + password;
   }
   return allUrl;
 };
