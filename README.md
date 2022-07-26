@@ -24,7 +24,7 @@ Then run the React Application
 
 ### `npm run start`
 
-Go to localhost:3001, thi is where the react app will be working. Whilst the json-server will be at localhost:3000
+Go to localhost:3001, this is where the react app will be working at. Whilst the json-server will be at localhost:3000
 
 This is why .env file has been added to this repo.
 
