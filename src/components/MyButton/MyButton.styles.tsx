@@ -41,7 +41,8 @@ export const Button = styled.button<ButtonProps>`
 
   &.save,
   &.new,
-  &.cancel {
+  &.cancel,
+  &.submit {
     height: 3rem;
     font-size: 1.2rem;
     background-color: ${colors.backgroundColor};

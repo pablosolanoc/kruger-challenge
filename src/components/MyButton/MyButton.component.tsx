@@ -32,7 +32,7 @@ const MyButton = ({
   return (
     <Button
       className={`${type} b-radius-15 clickable centered`}
-      type={type === "save" ? "submit" : "button"}
+      type={type === "save" || type === "submit" ? "submit" : "button"}
       myButtonType={type}
       onClick={
         type === New ? onClickNew : type === Cancel ? onClickCancel : onClick
