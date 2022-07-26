@@ -28,4 +28,4 @@ Go to localhost:3001, this is where the react app will be working at. Whilst the
 
 This is why .env file has been added to this repo.
 
-<b>Note:</b> This project was developed and tested on a Linux distro: Kubuntu 20.4. 
+<b>Note:</b> This project was developed and tested on a Linux distro: Kubuntu 20.04. 
