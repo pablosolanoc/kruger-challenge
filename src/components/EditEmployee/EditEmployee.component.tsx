@@ -18,6 +18,8 @@ import { EmployeeDto } from "types/dtos/employeeDto";
 
 const EditEmployee = () => {
   const { user, setUser, isThereUserLoggedIn } = useUser();
+  const [savedMessage, setSavedMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const newEmployeeInfoInitialValues = {
     birthdate: user.birthdate,
@@ -46,7 +48,6 @@ const EditEmployee = () => {
     : newEmployeeInfoValidation;
 
   const handleChangeRadioButtons = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("hey");
     if (e.target.value === VaccinationStatusFilterEnum.VACCINATED) {
       setVaccinated(true);
     } else {
@@ -78,7 +79,6 @@ const EditEmployee = () => {
     validationSchema: validationToUse,
     // validateOnChange: false,
     onSubmit: async (values) => {
-      console.log("Hola");
       let newEmployee = {} as EmployeeDto;
       newEmployee = {
         id: user.id,

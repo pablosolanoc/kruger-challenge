@@ -20,7 +20,6 @@ const CreateNew = () => {
     useState(false);
 
   useEffect(() => {
-    console.log(employeeBeignEdited);
     if (Object.keys(employeeBeignEdited).length > 0) {
       formik.setFieldValue("names", employeeBeignEdited.names);
       formik.setFieldValue("lastnames", employeeBeignEdited.lastnames);
@@ -48,7 +47,6 @@ const CreateNew = () => {
 
       let newEmployee = {} as EmployeeDto;
       if (isUpdating) {
-        console.log("hey ");
         newEmployee = {
           id: employeeBeignEdited.id,
           names: values.names,
@@ -70,14 +68,10 @@ const CreateNew = () => {
         );
         if (typeof putResult === "boolean") {
           setTryingToAddExistingEmployee(true);
-          console.log("Usuario ya existe");
         } else {
-          console.log("Anadido");
           window.location.reload();
         }
-        console.log(putResult);
       } else {
-        console.log("hey 2");
         newEmployee = {
           names: values.names,
           lastnames: values.lastnames,
@@ -96,12 +90,9 @@ const CreateNew = () => {
         const postResult = await EmployeeApi.createEmployee(newEmployee);
         if (typeof postResult === "boolean") {
           setTryingToAddExistingEmployee(true);
-          console.log("Usuario ya existe");
         } else {
-          console.log("Anadido");
           window.location.reload();
         }
-        console.log(postResult);
       }
     },
   });

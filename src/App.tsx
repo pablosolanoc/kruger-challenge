@@ -13,7 +13,7 @@ import MyButton from "components/MyButton/MyButton.component";
 
 function App() {
   const { user, isThereUserLoggedIn: loadLogin } = useUser();
-  console.log(user);
+
   return (
     <AppContainer>
       <AppContent>

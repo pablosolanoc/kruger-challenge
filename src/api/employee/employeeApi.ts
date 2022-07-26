@@ -36,7 +36,6 @@ export const EmployeeApi = {
       query = addVaccinationTypeFilter(query, filters.vaccinationtype);
     }
 
-    console.log(query);
     //Load employees given vaccination state/type filter
     let allEmployee = await getQuery(query);
 

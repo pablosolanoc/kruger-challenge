@@ -32,7 +32,7 @@ export const deleteQuery = async (route: string) => {
 export const postQuery = async (route: string, newEmployee: EmployeeDto) => {
   try {
     const response = await axios.post(route, newEmployee);
-    console.log(response);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -46,7 +46,7 @@ export const putQuery = async (
 ) => {
   try {
     const response = await axios.put(route, employee_beign_edited);
-    console.log(response);
+
     return response.data;
   } catch (error) {
     console.error(error);

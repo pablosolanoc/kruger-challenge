@@ -29,12 +29,9 @@ const Filters = () => {
     }
   };
 
-  console.log(vaccinationtype);
-
   const handleChangeCheckBoxes = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checkboxClicked = e.target.name;
-    console.log(checkboxClicked);
-    console.log(e.target.checked);
+
     if (checkboxClicked) {
       setVaccineTypeFilter({
         ...vaccinationtype,
@@ -44,12 +41,10 @@ const Filters = () => {
   };
 
   const handleChangeLowerDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setDateLowerFilter(e.target.value);
   };
 
   const handleChangeHigherDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setDateHigherFilter(e.target.value);
   };
 

@@ -44,7 +44,6 @@ export const searchForExistingEmployee = async (new_employee: EmployeeDto) => {
     identificationToSearch
   );
 
-  console.log(existingEmployee);
   const isThereAEmployeeWithThatIdentification = existingEmployee.length > 0;
   return isThereAEmployeeWithThatIdentification;
 };
@@ -69,7 +68,7 @@ export const getEmployeeByIdentificationAndPassword = async (
       identification
     );
     query = addPasswordFilterToQuery(query, password);
-    console.log(query);
+
     const existingEmployee = await getQuery(query);
     return existingEmployee[0] as EmployeeDto;
   }
