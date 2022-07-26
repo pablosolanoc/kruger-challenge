@@ -71,17 +71,4 @@ export const CreateNewContainer = styled.div`
   .inputErrorCombo {
     flex-direction: column;
   }
-
-  input {
-    border: none;
-    -webkit-appearance: none;
-    -ms-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: #ffff;
-    padding: 12px;
-    border-radius: 3px;
-    width: 100%;
-    font-size: 14px;
-  }
 `;
