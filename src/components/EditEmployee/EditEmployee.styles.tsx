@@ -93,4 +93,20 @@ export const EditEmployeeContainer = styled.div`
       width: 90%;
     }
   }
+
+  .message {
+    width: 100%;
+    padding: 1rem;
+    opacity: 0%;
+    animation: 2s fadeOut ease-in-out forwards;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 100%;
+    }
+    to {
+      opacity: 0%;
+    }
+  }
 `;

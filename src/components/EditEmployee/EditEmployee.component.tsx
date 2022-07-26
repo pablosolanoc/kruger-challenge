@@ -101,13 +101,18 @@ const EditEmployee = () => {
       const putResult = await EmployeeApi.updateEmployee(newEmployee);
       if (typeof putResult === "boolean") {
         // setTryingToAddExistingEmployee(true);
-        console.log("Usuario ya existe");
+        setErrorMessage(true);
+        setTimeout(() => {
+          setErrorMessage(false);
+        }, 2000);
       } else {
-        console.log("Anadido");
+        setSavedMessage(true);
         // window.location.reload();
+        setUser(putResult[0]);
+        setTimeout(() => {
+          setSavedMessage(false);
+        }, 2000);
       }
-      setUser(putResult[0]);
-      console.log(putResult);
     },
   });
 
@@ -331,6 +336,16 @@ const EditEmployee = () => {
               Guardar
             </MyButton>
           </div>
+          {savedMessage && (
+            <span className="message">
+              ** Se ha actualizado el empleado existosamente
+            </span>
+          )}
+          {errorMessage && (
+            <span className="message error">
+              ** Ha ocurrido un error en la actualización del empleado
+            </span>
+          )}
         </form>
       </div>
     </EditEmployeeContainer>
