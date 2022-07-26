@@ -47,4 +47,17 @@ export const AppContent = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .defaultInput {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #ffff;
+    padding: 12px;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 14px;
+  }
 `;
