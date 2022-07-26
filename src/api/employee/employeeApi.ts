@@ -73,6 +73,14 @@ export const EmployeeApi = {
   },
 
   updateEmployee: async (employee_beign_edited: EmployeeDto) => {
+    const employee = await putQuery(
+      `${endPointRoute}${employeeSlug}${employee_beign_edited.id}`,
+      employee_beign_edited
+    );
+    return [employee] as EmployeeDto[];
+  },
+
+  updateEmployeeBasicInfo: async (employee_beign_edited: EmployeeDto) => {
     const isThereAEmployeeWithThatIdentification =
       await searchForExistingEmployee(employee_beign_edited);
 
