@@ -6,19 +6,22 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import EditingEmployeeProvider from "contexts/editingEmployee/useEditingEmployee";
 import FiltersProvider from "context/filters/useFilters";
+import UserProvider from "context/user/useUser";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <EditingEmployeeProvider>
-        <FiltersProvider>
-          <App />
-        </FiltersProvider>
-      </EditingEmployeeProvider>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <EditingEmployeeProvider>
+          <FiltersProvider>
+            <App />
+          </FiltersProvider>
+        </EditingEmployeeProvider>
+      </BrowserRouter>
+    </UserProvider>
   </React.StrictMode>
 );
 
