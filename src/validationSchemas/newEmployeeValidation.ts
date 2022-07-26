@@ -1,21 +1,21 @@
 import * as yup from "yup";
 
-const namesValidation = yup
+export const namesValidation = yup
   .string()
   .matches(/^[aA-zZ\s]+$/, "Solo se aceptan letras del alfabeto")
   .required("Los nombres del nuevo empleado es obligatorio");
-const lastNamesValidation = yup
+export const lastNamesValidation = yup
   .string()
   .matches(/^[aA-zZ\s]+$/, "Solo se aceptan letras del alfabeto")
   .required("Los apellidos del nuevo empleado es obligatorio");
-const identificationValidation = yup
+export const identificationValidation = yup
   .string()
   .min(10, "La cédula debe tener una longitud mínima de 10 números")
   .max(10, "La cédula debe tener una longitud máxima de 10 números")
   .required("La cedula del nuevo empleado es obligatorio")
   .matches(/^\d+$/, "Solo pueden insertarse numeros");
 
-const emailValidation = yup
+export const emailValidation = yup
   .string()
   .email("Ingrese un email valido.")
   .required("El e-mail del nuevo empleado es obligatorio");
