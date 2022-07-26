@@ -20,7 +20,7 @@ The run the json-server
 
 **`json-server --watch db.json`**
 
-Then run the React Application
+Then, on another terminal run the React Application
 
 **`npm run start`**
 
