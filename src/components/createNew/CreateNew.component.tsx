@@ -142,7 +142,7 @@ const CreateNew = () => {
               <span>Cedula: </span>
               <input
                 placeholder=""
-                className={`textinput ${
+                className={`textinput defaultInput ${
                   errorInIdentification ? "inputError" : ""
                 }`}
                 name="identification"
@@ -160,7 +160,9 @@ const CreateNew = () => {
               <span>Nombres: </span>
               <input
                 placeholder=""
-                className={`textinput ${errorInNamesInput ? "inputError" : ""}`}
+                className={`textinput defaultInput ${
+                  errorInNamesInput ? "inputError" : ""
+                }`}
                 name="names"
                 value={formik.values.names}
                 onChange={formik.handleChange}
@@ -176,7 +178,7 @@ const CreateNew = () => {
               <span>Apellidos: </span>
               <input
                 placeholder=""
-                className={`textinput ${
+                className={`textinput defaultInput ${
                   errorInLastNamesInput ? "inputError" : ""
                 }`}
                 name="lastnames"
@@ -195,7 +197,9 @@ const CreateNew = () => {
               <span>E-mail: </span>
               <input
                 placeholder=""
-                className={`textinput ${errorInEmail ? "inputError" : ""}`}
+                className={`textinput defaultInput ${
+                  errorInEmail ? "inputError" : ""
+                }`}
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
