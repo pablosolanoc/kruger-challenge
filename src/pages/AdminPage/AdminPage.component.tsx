@@ -8,6 +8,9 @@ import CreateNew from "components/createNew/CreateNew.component";
 import Filters from "components/Filters/Filters.component";
 import { Title } from "components/Title/Title.styles";
 import { useFilters } from "context/filters/useFilters";
+import { Link } from "react-router-dom";
+import MyButton from "components/MyButton/MyButton.component";
+import Navigation from "components/Navigation/Navigation.component";
 
 const AdminPage = () => {
   const [employeesList, setEmployeesList] = useState([] as EmployeeDto[]);
@@ -35,6 +38,7 @@ const AdminPage = () => {
 
   return (
     <AdminPageContainer className="centered">
+      <Navigation />
       <Table data={employeesList} reloadData={loadEmployees}></Table>
       <CreateNew></CreateNew>
     </AdminPageContainer>
