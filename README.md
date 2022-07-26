@@ -6,23 +6,23 @@ This project was created via [Create React App](https://github.com/facebook/crea
 
 First clone this repo.
 
-### `git clone https://github.com/pablosolanoc/kruger-challenge.git`
+**`git clone https://github.com/pablosolanoc/kruger-challenge.git`**
 
 Get into project folder
 
-### `cd kruger-challenge`
+**`cd kruger-challenge`**
 
 Install dependencies
 
-### `npm i`
+**`npm i`**
 
 The run the json-server
 
-### `json-server --watch db.json`
+**`json-server --watch db.json`**
 
 Then run the React Application
 
-### `npm run start`
+**`npm run start`**
 
 Go to localhost:3001, this is where the react app will be working at. Whilst the json-server will be at localhost:3000
 
