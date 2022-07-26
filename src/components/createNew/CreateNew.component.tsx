@@ -90,8 +90,8 @@ const CreateNew = () => {
           vaccine: 0,
           vaccinationdate: "",
           dosisnumber: 0,
-          username: `${values.identification}${values.email}`,
-          password: `${values.identification}secret`,
+          username: `${values.identification}${values.names}`,
+          password: `secret`,
         };
         const postResult = await EmployeeApi.createEmployee(newEmployee);
         if (typeof postResult === "boolean") {
